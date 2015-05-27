@@ -24,7 +24,7 @@
             <hr>
             <ul>
                 <li ng-repeat="item in dirList.list | filter:search">
-                    <strong>{{item.name}}</strong> - <em>{{item.age}}</em>
+                    <strong>{{item.name}}</strong> - <em>{{item.age | currency:"&yen;":0}}</em>
                 </li>   
             </ul>
 
