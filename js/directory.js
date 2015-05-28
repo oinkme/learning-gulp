@@ -3,6 +3,8 @@ angular.module('directoryApp', [])
 		
 		var dirList = this;
 
+		dirList.toggle = false;
+
 		dirList.list = [
 			{name: 'Camilo', age: 27},
 			{name: 'Pamela', age: 24},

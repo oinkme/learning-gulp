@@ -22,11 +22,20 @@
             <hr>
         	<input type="text" ng-model="search" class="form-control" placeholder="Filtra un poco la lista acá">
             <hr>
-            <ul>
-                <li ng-repeat="item in dirList.list | filter:search">
-                    <strong>{{item.name}}</strong> - <em>{{item.age | currency:"&yen;":0}}</em>
+            
+            <button class="btn btn-primary" ng-if="!dirList.toggle" ng-click="dirList.toggle = true">Show Names</button>
+
+            <button class="btn btn-secondary" ng-if="dirList.toggle" ng-click="dirList.toggle = false">Hide Names</button>
+
+            <ul ng-class="{'hidden': !dirList.toggle}">
+                <li ng-repeat="item in dirList.list | filter:search"
+                    ng-class="item.age > 29 ? 'over-thirty' : 'under-thirty'">
+                    <strong>{{item.name}}</strong> - <em>{{item.age}}</em>
                 </li>   
             </ul>
+
+            <!-- Esto corresponde a otra manera de hacer lo que está más arriba, pero más "cochino" -->
+            <!-- ng-class="{'over-thirty': item.age > 30, 'under-thirty': item.age < 30}" -->
 
             <form ng-submit="dirList.addPerson()">
                 <input type="text" placeholder="Name" ng-model="dirList.name">
